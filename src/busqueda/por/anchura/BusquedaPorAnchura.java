@@ -8,6 +8,7 @@ package busqueda.por.anchura;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,8 +24,9 @@ public class BusquedaPorAnchura {
       public static  Point aux;
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        lista.add(new Point(0, 0));
+        jarra4=Integer.parseInt(JOptionPane.showInputDialog(null, "ingrese la cantidad de la jarra de 4 litros"));
+        jarra3=Integer.parseInt(JOptionPane.showInputDialog(null, "ingrese la cantidad de la jarra de 3 litros"));
+        lista.add(new Point(jarra4, jarra3));
         aux=lista.get(indice);
         while(aux.x !=2){
             /*System.out.println("indice"+ indice);
@@ -32,26 +34,38 @@ public class BusquedaPorAnchura {
             System.out.println(lista);*/
        jarra4=llenar4();
        checarlista();
+       if(checar2()){
+           break;}
        jarra4=(int) aux.getX();
        jarra3=(int) aux.getY();
         jarra3=llenar3();
          checarlista();
+         if(checar2()){
+           break;}
          jarra4=(int) aux.getX();
        jarra3=(int) aux.getY();
        jarra4=vaciar4();
         checarlista();
+        if(checar2()){
+           break;}
         jarra4=(int) aux.getX();
        jarra3=(int) aux.getY();
        jarra3=vaciar3();
-        checarlista();
+        checarlista();   
+        if(checar2()){
+           break;}
         jarra4=(int) aux.getX();
        jarra3=(int) aux.getY();
        verter4en3(jarra3, jarra4);
         checarlista();
+        if(checar2()){
+           break;}
          jarra4=(int) aux.getX();
        jarra3=(int) aux.getY();
         verter3en4(jarra3, jarra4);
         checarlista();
+        if(checar2()){
+           break;}
         indice++;
         aux=lista.get(indice);
         }
@@ -63,7 +77,14 @@ public class BusquedaPorAnchura {
         
     
     }
-            
+     public static boolean checar2(){
+     Point x=lista.get(lista.size()-1);
+         if(x.x==2){
+         return true;}else{
+          return false;   
+         }
+     }
+     
     
      public static void checarlista(){
          boolean bandera=true;
